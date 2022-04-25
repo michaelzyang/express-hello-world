@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = 8654;
+const PORT = parseArgByFlag(process.argv, flag="-p", defaultVal="8654");
 
 // Define middleware
 app.use(express.json());   // JSON parsing middleware.
@@ -32,3 +32,10 @@ app.post('/secret/:word', (req, res) => {
     })
 });
 // curl -X POST localhost:8654/secret/harry -H 'Content-Type: application/json' -d '{"hint":"potter"}'
+
+
+// Helper functions
+function parseArgByFlag(argv, flag, defaultVal) {
+    const flagIdx = argv.indexOf(flag);
+    return flagIdx === -1 ? defaultVal : argv[flagIdx + 1];
+}
