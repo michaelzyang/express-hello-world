@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const PORT = parseArgByFlag(process.argv, flag="-p", defaultVal="8654");
+const PORT = parseArgByFlag(process.argv, flag="-p", defaultVal="80");
 
 // Define middleware
 app.use(express.json());   // JSON parsing middleware.
